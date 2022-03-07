@@ -8,7 +8,7 @@ public class OperationsPromotionExample {
 		// byte bytevalue3 = bytevalue1 + bytevalue2;
 		int intvalue1 = bytevalue1 + bytevalue2;
 		System.out.println(intvalue1);
-		//byte 타입 끼리의 연산일지라도, byte타입 변수에 저장하면 에러가 발뱅. int 타입 변수에 저장하여야 한다
+		//byte 타입 끼리의 연산일지라도, byte타입 변수에 저장하면 에러가 발생. int 타입 변수에 저장하여야 한다
 		char charvalue1 = 'A';
 		char charvalue2 = 1;
 		// char charvalue3 = charvalue1 + charvalue2;
