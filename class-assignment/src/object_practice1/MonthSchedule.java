@@ -29,35 +29,49 @@ public class MonthSchedule {
 	
 	// 생성자
 	public MonthSchedule(int nDays) {
-		scanner = new Scanner(System.in);
+		scanner = new Scanner(System.in); // 스캐너 초기화
 		this.nDays = nDays;
-		this.days = new Day[nDays];
+		this.days = new Day[nDays]; // 객체 배열 생성
+		// * 객체 배열의 각 원소를 초기화
+		for(int i = 0; i < days.length; i++) {
+			days[i] = new Day();
+		} 
 	}
 	
 	// 메소드
+	
+	// 할 일을 입력하는 메소드
 	private void input() {
 		System.out.print("날짜(1~30)?");
 		int num;
 		num = scanner.nextInt();
 		System.out.print("할일(빈칸없이입력)?");
 		String work = scanner.next();
-
+		if(num < 1 || num > 30) {
+			System.out.println("날짜 잘못 입력하였습니다.");
+			System.out.println();
+			return;
+		}
 		days[num - 1].set(work);
 	}
+	// 할 일을 보는 메소드
 	private void view() {
 		System.out.print("날짜(1~30)?");
 		int num = scanner.nextInt();
 		if(num < 1 || num > 30) {
 			System.out.println("날짜 잘못 입력하였습니다.");
+			System.out.println();
 			return;
 		}
 		System.out.print(num + "일의 할 일은 ");
 		days[num - 1].show();
 	}
+	// 프로그램 종료
 	private void finish() {
 		System.out.println("프로그램을 종료합니다.");
 		scanner.close();
 	}
+	// 실행 메소드
 	public void run() {
 		while(true) {
 		System.out.print("할일(입력:1, 보기:2, 끝내기:3) >> ");
