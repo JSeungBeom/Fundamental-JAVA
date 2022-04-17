@@ -12,7 +12,7 @@ public class ArrayCreateByValueListExample1 {
 		// 배열의 index는 0부터 시작한다.
 		
 		int sum = 0;
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < scores.length; i++) {
 			sum+=scores[i];
 		} // 배열의 모든 요소들을 sum에 더하여 저장
 		System.out.println("총합 : " + sum); // sum을 출력

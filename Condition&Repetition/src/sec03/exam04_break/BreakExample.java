@@ -10,8 +10,8 @@ public class BreakExample {
 				if(num == 6) {
 					break;
 				}
-				System.out.println("프로그램 종료");
-			} // num이 6이 나올 때까지, 난수를 num에 저장하면서 출력
+			}
+			System.out.println("프로그램 종료");// num이 6이 나올 때까지, 난수를 num에 저장하면서 출력
 	}
 
 }

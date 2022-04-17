@@ -5,7 +5,8 @@ public class IfNestedExample {
 	public static void main(String[] args) {
 		int score = (int)(Math.random()*20) + 81;
 		// Math.random() 함수는 0 ~ 1의 실수를 랜덤으로 생성
-		// 결과적으로 Math.random()*20은 0 ~ 19의 난수를 생성
+		// 결과적으로 Math.random()*20은 0 <= x < 20의 난수를 생성
+		// 이에 (int)로 casting하면 0~19의 난수가 생성, +81으로 최종적으로 81 ~ 100의 난수 생성
 		System.out.println("점수: " + score);
 		
 		String grade;

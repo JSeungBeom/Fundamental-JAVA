@@ -12,7 +12,7 @@ public class StringEqualsExample {
 		// 비교 결과 true
 		System.out.println(strVar1 == strVar3);
 		// 비교 연산은 두 객체가 같은지 비교.
-		// 따라서 strVar1과 strVar3는 다른 객체이므로 false를 리턴
+		// 따라서 strVar1과 strVar3는 다른 객체를 참조하므로 false를 리턴
 		System.out.println();
 		System.out.println(strVar1.equals(strVar2));
 		System.out.println(strVar1.equals(strVar3));
