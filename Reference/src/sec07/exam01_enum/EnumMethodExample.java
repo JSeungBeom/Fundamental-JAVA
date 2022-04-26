@@ -33,9 +33,9 @@ public class EnumMethodExample {
 		} // valueOf() 메소드 : 주어진 문자열의 열거 객체를 리턴
 		
 		Week days[] = Week.values();
-		for(Week day : days) {
-			System.out.println(day);
-		} // values() 메소드 : 모든 열거 객체들을 배열로 리턴
+		for(Week day : days){
+			System.out.println(day);// values() 메소드 : 모든 열거 객체들을 배열로 리턴
+		}
 	}
 
 }
