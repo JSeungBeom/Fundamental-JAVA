@@ -13,6 +13,9 @@ class Point{
 		return "Point(" + x + "," + y + ")";
 	}
 	
+	// Object 클래스의 equals() 메소드 오버라이딩
+	// equals() 메소드는 기본적으로는 == (동등 연산자)와 같은 기능
+	// 논리적 동등 판단을 위해서 상황에 맞게 오버라이딩 필요
 	public boolean equals(Object obj) {
 		Point p = (Point)obj;
 		if(x == p.x && y == p.y)

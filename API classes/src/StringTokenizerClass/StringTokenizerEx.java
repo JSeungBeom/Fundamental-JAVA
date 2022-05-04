@@ -10,5 +10,4 @@ public class StringTokenizerEx {
 		while(st.hasMoreTokens()) // 스트링 토크나이저의 토큰이 남아있는지 판단
 			System.out.println(st.nextToken()); // 스트링 토크나이저 객체의 다음 토큰을 리턴
 	}
-
 }

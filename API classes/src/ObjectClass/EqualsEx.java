@@ -8,7 +8,7 @@ class Rect{
 		this.height = height;
 	}
 	
-	// Object 클래스의 equals 메소드 오버라이딩
+	// 논리적 동등 비교를 위해, Object 클래스의 equals 메소드 오버라이딩
 	public boolean equals(Object obj) {
 		Rect p = (Rect)obj;
 		if(width*height == p.width*p.height)
