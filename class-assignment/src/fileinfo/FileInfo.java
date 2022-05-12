@@ -1,33 +1,35 @@
 // package fileinfo;
 
 import java.io.File;
-import java.io.OutputStream;
-import java.io.InputStream;
-import java.io.FileInputStream;
+import java.io.Reader;
+import java.io.FileReader;
 
 public class FileInfo {
-
+	// InputStream, OutputStream ì‚¬ìš© ì‹œ, ë°œìƒí•˜ëŠ” ì˜ˆì™¸ë¥¼ ì²˜ë¦¬í•´ì¤˜ì•¼ í•œë‹¤.
+	// 1. main í•¨ìˆ˜ì—ì„œ throws Exception : ìë°” ê°€ìƒ ë¨¸ì‹ (JVM)ì—ì„œ ì˜ˆì™¸ë¥¼ ì²˜ë¦¬
+	// 2. try-catch ë¬¸ìœ¼ë¡œ ì˜ˆì™¸ë¥¼ ì§ì ‘ ì²˜ë¦¬
 	public static void main(String[] args) throws Exception {
-		File dir = new File("C:/Temp"); // Temp µğ·ºÅä¸®¸¦ °æ·Î·Î ÇÏ´Â File °´Ã¼ »ı¼º
-		// µğ·ºÅä¶ó¿¡ Æ÷ÇÔµÈ ÆÄÀÏµéÀ» File ¹è¿­·Î ¸®ÅÏ
+		File dir = new File("C:/Temp"); // Temp ë””ë ‰í† ë¦¬ë¥¼ ê²½ë¡œë¡œ í•˜ëŠ” File ê°ì²´ ìƒì„±
+		// ë””ë ‰í† ë¼ì— í¬í•¨ëœ íŒŒì¼ë“¤ì„ File ê°ì²´ ë°°ì—´ë¡œ ë¦¬í„´
 		File files[] = dir.listFiles(); 
-		
-		for(File filedata : files) {
-			// ¸¸¾à, file ¹è¿­ÀÇ ¿ä¼Ò°¡ Æú´õ¶ó¸é, Á¤º¸¸¦ Ãâ·ÂÇÏÁö ¾Ê°í °Ç³Ê ¶Ü
+
+			for(File filedata : files) { 
+			// ë§Œì•½, file ë°°ì—´ì˜ ìš”ì†Œê°€ í´ë”ë¼ë©´, ì •ë³´ë¥¼ ì¶œë ¥í•˜ì§€ ì•Šê³  ê±´ë„ˆ ëœ€
 			if(filedata.isDirectory())
 				continue;
-			// getName ¸Ş¼Òµå·Î ¸ğµç ÆÄÀÏÀÇ ÀÌ¸§À» ¾ò¾î¿È
+			// getName ë©”ì†Œë“œë¡œ ëª¨ë“  íŒŒì¼ì˜ ì´ë¦„ì„ ì–»ì–´ì˜´
 			System.out.println("< " + filedata.getName() + " >");
-			InputStream is = new FileInputStream(filedata); // ÆÄÀÏÀÇ µ¥ÀÌÅÍ¸¦ ÀĞ¾î¿À´Â °´Ã¼
-			OutputStream os = System.out; // ÄÜ¼Ö Ã¢¿¡ Ãâ·ÂÀ» À§ÇØ, OutputStream Å¸ÀÔ System.out ÇÊµå ¼±¾ğ
+			Reader is = new FileReader(filedata); // í…ìŠ¤íŠ¸ íŒŒì¼ë¡œë¶€í„° ë°ì´í„°ë¥¼ ì½ì–´ì˜¤ëŠ” ê°ì²´
+			int readCharNo; // read ë©”ì†Œë“œë¡œë¶€í„° ë¦¬í„´ë˜ëŠ” ë°ì´í„°ì˜ ìˆ˜ë¥¼ ì €ì¥
 			
-			byte[] readBytes = new byte[300]; // ÇÑ±ÛÀ» Ãâ·ÂÇÏ±â À§ÇØ, ¸ğµç ÀÔ·Â ½ºÆ®¸²ÀÇ ¹ÙÀÌÆ®¸¦ ÀúÀåÇÒ ¹ÙÀÌÆ® ¹è¿­
-			int readByteNo = is.read(readBytes); // ¹ÙÀÌÆ® ¹è¿­¿¡ ÀĞÀº ¹ÙÀÌÆ®µéÀ» ÀúÀåÇÏ°í, ÀĞÀº ¹ÙÀÌÆ®ÀÇ ¼ö¸¦ ¸®ÅÏ
-			String data = new String(readBytes, 0, readByteNo); // readBytes ¹è¿­ÀÇ ¸ğµç ¹ÙÀÌÆ®¸¦ data¿¡ ÀúÀå
-			byte[] hangulBytes = data.getBytes(); // String Å¸ÀÔ data¸¦ byte ¹è¿­·Î ÀúÀå
-			os.write(hangulBytes); // ¸ğµç ¹ÙÀÌÆ® ÄÚµå¸¦ ÄÜ¼Ö¿¡ Ãâ·Â ( ÄÜ¼Ö¿¡¼­ ¹®ÀÚ·Î º¯È¯µÇ¾î Ãâ·Â )
-			os.flush();
-			System.out.println();
+			char cbuf[] = new char[100]; // í…ìŠ¤íŠ¸ë¥¼ ì„ì‹œë¡œ ì €ì¥í•  char ë°°ì—´
+			
+			String data = "";
+			
+			while((readCharNo = is.read(cbuf)) != -1) {
+				data += new String(cbuf, 0, readCharNo); 
+			}
+			System.out.println(data);
 		}
 	}
 
