@@ -30,6 +30,7 @@ public class FileInfo {
 				data += new String(cbuf, 0, readCharNo); 
 			}
 			System.out.println(data);
+			is.close();
 		}
 	}
 
