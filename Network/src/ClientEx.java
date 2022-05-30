@@ -1,5 +1,3 @@
-package Chat;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -8,7 +6,6 @@ public class ClientEx {
 	public static void main(String[] args) {
 		BufferedReader in = null;
 		BufferedWriter out = null;
-		ServerSocket listener = null;
 		Socket socket = null;
 		Scanner scanner = new Scanner(System.in);
 		
