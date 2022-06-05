@@ -12,7 +12,7 @@ public class JLabelEx extends JFrame {
 		
 		JLabel textLabel = new JLabel("사랑합니다."); // 텍스트를 갖는 레이블 컴포넌트 생성
 		
-		ImageIcon beauty = new ImageIcon("images/beauty.jpg"); // ImageIcon 객체 생성 (경로명)
+		ImageIcon beauty = new ImageIcon("images/beauty.jpg");// ImageIcon 객체 생성 (경로명)
 		JLabel imageLabel = new JLabel(beauty); // 이미지를 갖는 레이블
 		
 		ImageIcon normalIcon = new ImageIcon("images/normalIcon.gif");
